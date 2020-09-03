@@ -1,0 +1,79 @@
+---
+case: [
+
+{
+    "version_control": "0",
+    "access_type": "1",
+    "name": "name1",
+    "result": "添加成功"
+  },
+{
+  "version_control": "1",
+  "access_type": "1",
+  "name": "name5",
+  "result": "添加成功"
+  },
+  {
+    "version_control": "0",
+    "access_type": "2",
+    "name": "name1",
+    "result": "添加成功",
+  },
+{
+  "version_control": "0",
+  "access_type": "3",
+  "name": "name1",
+  "result": "添加成功",
+},
+  {
+    "version_control": "2",
+    "access_type": "1",
+    "name": "name6",
+    "result": "该版本控制不可用，请重新选择",
+    "isDeleteBucket": "0"
+  },
+{
+  "version_control": "-1",
+  "access_type": "1",
+  "name": "name6",
+  "result": "该版本控制不可用，请重新选择",
+  "isDeleteBucket": "0"
+},
+{
+  "version_control": "1",
+  "access_type": "1",
+  "name": "",
+  "result": "Bucket名称不能为空",
+  "isDeleteBucket": "0"
+},
+{
+  "version_control": "0",
+  "access_type": "1",
+  "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "result": "存储桶名称只能包含小写字母、数字、连字符，且在3-63位之间",
+  "isDeleteBucket": "0"
+},
+{
+  "version_control": "0",
+  "access_type": "1",
+  "name": "__",
+  "result": "存储桶名称只能包含小写字母、数字、连字符，且在3-63位之间",
+  "isDeleteBucket": "0"
+},
+{
+  "version_control": "0",
+  "access_type": "1",
+  "name": "123Azm",
+  "result": "存储桶名称只能包含小写字母、数字、连字符，且在3-63位之间",
+  "isDeleteBucket": "0"
+},
+{
+  "version_control": "0",
+  "access_type": "1",
+  "name": ".",
+  "result": "存储桶名称只能包含小写字母、数字、连字符，且在3-63位之间",
+  "isDeleteBucket": "0"
+}
+
+
+]

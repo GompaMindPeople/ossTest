@@ -1,0 +1,5 @@
+
+#测试： http://opentest.kkclouds.com/oss
+#正式： https://open.kuaikuaicloud.com/oss
+#文件上传BASE_URL地址： https://oss.kkidc.com
+url: "http://opentest.kkclouds.com"
