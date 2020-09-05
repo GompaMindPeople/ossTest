@@ -3,21 +3,22 @@ import time
 
 import pytest
 import yaml
-from service.ossService import OSSService
+
 import case.common as common
 
-@pytest.fixture(name="oss")
-def init():
-    f = open("../config/config.yaml", 'r', encoding="utf-8")
-    cfg = f.read()
-    load = yaml.load(cfg, Loader=yaml.BaseLoader)
-    url = load["url"]
-    kk_oss = OSSService(url)
-    return kk_oss
+
+import common.yaml_utils as yamlUtils
 
 
 
 
+
+# def test_sucess():
+#     print("test sucess")
+#
+# def test_fail():
+#     print("test fail")
+@pytest.mark.usefixtures("Scene")
 def test_GetRegion(oss):
     data = common.GetData()
     result = oss.GetRegion(data)
@@ -25,14 +26,13 @@ def test_GetRegion(oss):
 
 
 def test_addBucket(oss):
-    f = open("./AddBucket.yaml", "r", encoding="utf-8")
     data1 = common.GetData()
     # 先获取到 地区列表
     region = oss.GetRegion(data1)
     assert "请求成功" in region
     data = common.GetData()
     data["storage_type"] = "1"
-    addBucketCase = yaml.load(f, Loader=yaml.BaseLoader)
+    addBucketCase = yamlUtils.ReadYaml("./AddBucket.yaml")
     jsonDict = json.loads(region)
     for k1 in addBucketCase["case"]:
         data["version_control"] = k1["version_control"]
@@ -53,3 +53,6 @@ def test_addBucket(oss):
             time.sleep(10)
             result = oss.DeleteBucket(d)
             assert "删除成功" in result
+#
+# if __name__ == '__main__':
+#     pytest.main(['-s', 'test_add_bucket_case'])

@@ -5,7 +5,6 @@ import pytest
 import yaml
 import case.common as common
 from service.ossService import OSSService
-import case.common as common
 
 
 @pytest.fixture(name="oss")

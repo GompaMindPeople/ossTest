@@ -6,7 +6,6 @@ import yaml
 import case.common as common
 from service.ossService import OSSService
 
-
 @pytest.fixture(name="oss")
 def init():
     f = open("../config/config.yaml", 'r', encoding="utf-8")
