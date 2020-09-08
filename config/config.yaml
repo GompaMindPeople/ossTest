@@ -3,3 +3,5 @@
 #正式： https://open.kuaikuaicloud.com/oss
 #文件上传BASE_URL地址： https://oss.kkidc.com
 url: "https://open.kuaikuaicloud.com"
+# 安全密钥
+secretkey: "87QYTITCmWdblbrHjEvOIU9SFisg5gkluYVDIgaN"

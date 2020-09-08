@@ -6,11 +6,7 @@ import yaml
 
 import case.common as common
 
-
 import common.yaml_utils as yamlUtils
-
-
-
 
 
 # def test_sucess():

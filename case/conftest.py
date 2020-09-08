@@ -1,13 +1,14 @@
 import pytest
 import common.yaml_utils as yamlUtils
-from service.ossService import OSSService
+from service.OssService import OSSService
 
 
 @pytest.fixture(name="oss", scope="module")
 def init():
     load = yamlUtils.ReadYaml("../config/config.yaml")
     url = load["url"]
-    kk_oss = OSSService(url)
+    secretkey = load["secretkey"]
+    kk_oss = OSSService(url, secretkey)
     return kk_oss
 
 

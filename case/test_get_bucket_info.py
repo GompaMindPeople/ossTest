@@ -3,7 +3,7 @@ import time
 
 import pytest
 import yaml
-from service.ossService import OSSService
+from service.OssService import OSSService
 import case.common as common
 
 

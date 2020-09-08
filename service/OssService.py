@@ -1,4 +1,4 @@
-from model.kkoss import KKOss
+from model.KKOSS import KKOss
 
 
 # 定义装饰器
@@ -20,8 +20,8 @@ def InjectionHttpClient(func):
 
 class OSSService:
 
-    def __init__(self, host):
-        self.KKOss = KKOss(host)
+    def __init__(self, host, secretkey):
+        self.KKOss = KKOss(host, secretkey)
 
     @InjectionHttpClient
     def GetRegion(self, data, client):

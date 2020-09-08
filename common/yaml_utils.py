@@ -5,8 +5,11 @@ import yaml
 """
 
 
-def ReadYaml(filePath, mode="r"):
-    f = open(filePath, mode, encoding="utf-8")
+def ReadYaml(filepath, mode="r"):
+    f = open(filepath, mode, encoding="utf-8")
     cfg = f.read()
     load = yaml.load(cfg, Loader=yaml.BaseLoader)
     return load
+
+
+# def disposeYamlObject():

@@ -1,7 +1,8 @@
-from server.httpClient import HttpClient
+from server.HttpClient import HttpClient
 import re
 import time
 from server.Signature import Signature
+import json
 
 
 # 定义装饰器
@@ -22,16 +23,17 @@ def InjectionHttpClient(func):
 
 
 def MakeDefaultHeader():
-    return {}
+    return {"Content-Type": "application/json"}
 
 
 class KKOss:
-    host = ""
+    secretKey = ""
     httpClient = None
 
-    def __init__(self, host):
+    def __init__(self, host, secretKey):
         self.httpClient = HttpClient()
         self.httpClient.MakeSession(host)
+        self.secretKey = secretKey
 
     @InjectionHttpClient
     def SendOssOps(self, params, module, httpClient):
@@ -42,10 +44,12 @@ class KKOss:
             params["version"] = "v1"
         # params={"hello" : "nihao", "aa" : "233", "bb" : "cc", "ab" : "fff"}, secret_key="123456"
         params["timestamp"] = str(int(time.time()))
-        sign = Signature().makeSign(params=params, secret_key="87QYTITCmWdblbrHjEvOIU9SFisg5gkluYVDIgaN")
+        # "87QYTITCmWdblbrHjEvOIU9SFisg5gkluYVDIgaN"
+        sign = Signature().makeSign(params=params, secret_key=self.secretKey)
         params["sign"] = sign
         print(params)
-        response = httpClient.SendRequest("/oss", "POST", header, params)
+        encode = json.dumps(params).encode('utf-8')
+        response = httpClient.SendRequest("/oss", "POST", header, encode)
         return response.text
 
     """

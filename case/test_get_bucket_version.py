@@ -4,7 +4,7 @@ import time
 import pytest
 import yaml
 import case.common as common
-from service.ossService import OSSService
+from service.OssService import OSSService
 
 
 @pytest.fixture(name="oss")
