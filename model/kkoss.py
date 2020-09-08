@@ -1,5 +1,7 @@
 from server.httpClient import HttpClient
 import re
+import time
+from server.Signature import Signature
 
 
 # 定义装饰器
@@ -38,9 +40,11 @@ class KKOss:
             params["module"] = module
         if "version" not in params:
             params["version"] = "v1"
-        if "timestamp" not in params:
-            params["timestamp"] = "1"
-
+        # params={"hello" : "nihao", "aa" : "233", "bb" : "cc", "ab" : "fff"}, secret_key="123456"
+        params["timestamp"] = str(int(time.time()))
+        sign = Signature().makeSign(params=params, secret_key="87QYTITCmWdblbrHjEvOIU9SFisg5gkluYVDIgaN")
+        params["sign"] = sign
+        print(params)
         response = httpClient.SendRequest("/oss", "POST", header, params)
         return response.text
 
