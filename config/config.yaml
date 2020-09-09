@@ -3,5 +3,12 @@
 #正式： https://open.kuaikuaicloud.com/oss
 #文件上传BASE_URL地址： https://oss.kkidc.com
 url: "https://open.kuaikuaicloud.com"
+
+# 生产的 帐号的ak 和sk
 # 安全密钥
-secretkey: "87QYTITCmWdblbrHjEvOIU9SFisg5gkluYVDIgaN"
+accessKet: "GTy0cSD4EIsMFFWII4aV"
+secretkey: "o0ENiFubVkCv7q0dP6uiyOaHT5bNIFsj5ROXCqtN"
+
+
+#secretkey: "1234567890qwertyuiop1234567890qwertyuiop"
+#accessKet: "1234567890qwertyuiop"

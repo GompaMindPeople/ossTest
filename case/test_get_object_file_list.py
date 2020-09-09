@@ -15,7 +15,9 @@ import common.yaml_utils as yamlUtils
 # def test_fail():
 #     print("test fail")
 @pytest.mark.usefixtures("TempBucketScene")
-def test_GetRegion(oss):
+def test_GetFileList(oss):
     data = common.GetData()
-    result = oss.GetRegion(data)
-    assert "请求成功" in result
+    bucketId = oss.TempBucket["data"]["bucket_id"]
+    data["id"] = 43
+    result = oss.GetObjectFileList(data)
+    assert "获取成功" in result

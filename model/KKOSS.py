@@ -3,7 +3,7 @@ import re
 import time
 from server.Signature import Signature
 import json
-
+import common.yaml_utils as yamlUtils
 
 # 定义装饰器
 def InjectionHttpClient(func):
@@ -28,12 +28,15 @@ def MakeDefaultHeader():
 
 class KKOss:
     secretKey = ""
+    accessKet = ""
     httpClient = None
 
     def __init__(self, host, secretKey):
         self.httpClient = HttpClient()
         self.httpClient.MakeSession(host)
         self.secretKey = secretKey
+        yaml = yamlUtils.ReadYaml("../config/config.yaml")
+        self.accessKet = yaml["accessKet"]
 
     @InjectionHttpClient
     def SendOssOps(self, params, module, httpClient):
@@ -42,12 +45,10 @@ class KKOss:
             params["module"] = module
         if "version" not in params:
             params["version"] = "v1"
-        # params={"hello" : "nihao", "aa" : "233", "bb" : "cc", "ab" : "fff"}, secret_key="123456"
         params["timestamp"] = str(int(time.time()))
-        # "87QYTITCmWdblbrHjEvOIU9SFisg5gkluYVDIgaN"
+        params["access_key"] = self.accessKet
         sign = Signature().makeSign(params=params, secret_key=self.secretKey)
         params["sign"] = sign
-        print(params)
         encode = json.dumps(params).encode('utf-8')
         response = httpClient.SendRequest("/oss", "POST", header, encode)
         return response.text
@@ -58,3 +59,6 @@ class KKOss:
 
     def SendOssOpsByBucket(self, params):
         return self.SendOssOps(params, "buckets")
+
+    def SendOssOpsByObject(self, params):
+        return self.SendOssOps(params, "Objects")

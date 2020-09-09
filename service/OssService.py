@@ -151,3 +151,69 @@ class OSSService:
         data["action"] = "get_referer"
         result = client.SendOssOpsByBucket(data)
         return result
+
+    @InjectionHttpClient
+    def GetBucketTag(self, data, client):
+        data["action"] = "get_tags"
+        result = client.SendOssOpsByBucket(data)
+        return result
+
+    @InjectionHttpClient
+    def AddBucketTag(self, data, client):
+        data["action"] = "add_tag"
+        result = client.SendOssOpsByBucket(data)
+        return result
+
+    @InjectionHttpClient
+    def DeleteBucketTag(self, data, client):
+        data["action"] = "delete_tag"
+        result = client.SendOssOpsByBucket(data)
+        return result
+
+    @InjectionHttpClient
+    def GetObjecFileInfo(self, data, client):
+        data["action"] = "get_info"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def GetObjectFileList(self, data, client):
+        data["action"] = "get_file_object_lists"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def GetObjectFileVersionList(self, data, client):
+        data["action"] = "get_file_object_version_lists"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def AddObjectFolder(self, data, client):
+        data["action"] = "create_folder"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def DeleteObjectFolder(self, data, client):
+        data["action"] = "delete_folder"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def DeleteObjectFile(self, data, client):
+        data["action"] = "delete"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def DeleteObjectMultiFile(self, data, client):
+        data["action"] = "multi_delete"
+        result = client.SendOssOpsByObject(data)
+        return result
+
+    @InjectionHttpClient
+    def PutObjectFileAccess(self, data, client):
+        data["action"] = "set_access"
+        result = client.SendOssOpsByObject(data)
+        return result

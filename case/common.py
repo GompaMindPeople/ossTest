@@ -3,7 +3,7 @@ import time
 
 
 def GetData():
-    return {"access_key": "7qCOXq7GfZVpTPAyuAHI"}
+    return {}
 
 
 def AddBucketOne(oss, bucketName):

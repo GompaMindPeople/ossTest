@@ -8,9 +8,8 @@ class Signature:
         query = ""
         for key in params:
             if key[0] != 'sign' and key[1] != '':
-                query += (key[0] + '=' + key[1] + '&')
+                query += (str(key[0]) + '=' + str(key[1]) + '&')
         query += "key=" + secret_key
-        print("query---->"+query)
         sign = hashlib.md5(query.encode('utf-8')).hexdigest().upper().encode('utf-8')
         sign = hmac.new(secret_key.encode('utf-8'), sign, hashlib.sha256).hexdigest().upper()
         return sign
@@ -18,7 +17,6 @@ class Signature:
     def verifySign(self, params, sign, secret_key):
         _sign = Signature.makeSign(params, secret_key)
         return _sign == sign
-
 
 # if __name__ == '__main__':
 #     print(Signature.makeSign(params={"hello": "nihao", "aa": "233", "bb": "cc", "ab": "fff"}, secret_key="123456"))

@@ -1,5 +1,6 @@
 import pytest
 import common.yaml_utils as yamlUtils
+import case.common
 from service.OssService import OSSService
 
 
@@ -25,7 +26,11 @@ def Scene(oss):
 
 
 @pytest.fixture(scope="module")
-def Scene1(oss):
-    print("before")
+def TempBucketScene(oss):
+    bucketName = "tempbucket"
+    one = case.common.AddBucketOne(oss, bucketName)
+    assert "添加成功" in one["msg"]
+    oss.TempBucket = one
     yield
-    print("after")
+    bucket = case.common.DeleteBucket(oss, one["data"]["bucket_id"])
+    assert "删除成功" in bucket["msg"]

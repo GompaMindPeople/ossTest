@@ -15,7 +15,9 @@ import common.yaml_utils as yamlUtils
 # def test_fail():
 #     print("test fail")
 @pytest.mark.usefixtures("TempBucketScene")
-def test_GetRegion(oss):
+def test_addFolder(oss):
     data = common.GetData()
-    result = oss.GetRegion(data)
-    assert "请求成功" in result
+    data["bucket_id"] = 43
+    data["name"] = "new_chrome_proxy.exe"
+    result = oss.AddObjectFolder(data)
+    assert "创建成功" in result
