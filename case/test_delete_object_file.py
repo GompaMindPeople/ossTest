@@ -14,8 +14,8 @@ import common.yaml_utils as yamlUtils
 #
 # def test_fail():
 #     print("test fail")
-@pytest.mark.usefixtures("TempBucketScene")
 def test_deleteFile(oss):
+
     data = common.GetData()
     data["bucket_id"] = 43
     data["key"] = "new_chrome_proxy.exe"
